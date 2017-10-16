@@ -12,6 +12,8 @@
 
 #define VERSION "2.0"
 
+// main -> rmm_init -> rmm_init_venc 
+
 // #define FILE_SIZE 1914296   // 1851N
 // #define SEEK_POS0 0x0273a8u // 1851N
 // #define SEEK_POS1 0x027434u // 1851N
@@ -30,11 +32,11 @@
 // #define FW_VERSION "1861A"
 // #define PATCH_DATE "16.02.2016"
 
-#define FILE_SIZE 1918392   // 1861B
-#define SEEK_POS0 0x02745Cu // 1861B
-#define SEEK_POS1 0x0274E8u // 1861B
-#define FW_VERSION "1861B"
-#define PATCH_DATE "22.03.2016"
+// #define FILE_SIZE 1918392   // 1861B
+// #define SEEK_POS0 0x02745Cu // 1861B
+// #define SEEK_POS1 0x0274E8u // 1861B
+// #define FW_VERSION "1861B"
+// #define PATCH_DATE "22.03.2016"
 
 // #define FILE_SIZE 1918392   // 1861C
 // #define SEEK_POS0 0x02745Cu // 1861C
@@ -42,12 +44,19 @@
 // #define FW_VERSION "1861C"
 // #define PATCH_DATE "21.06.2016"
 
+// main -> (rmm_venc_create)
+
+#define FILE_SIZE 1384660   // 1870D US
+#define SEEK_POS0 0x01e554u // 1870D US
+#define SEEK_POS1 0x01e67cu // 1870D US
+#define FW_VERSION "1870D 27US"
+#define PATCH_DATE "15.10.2017"
+
 #define MIN_VALUE 80
 #define MAX_VALUE 6080
 
 typedef unsigned char BYTE;
 
-// main -> rmm_init -> rmm_init_venc 
 
 unsigned int ror(unsigned int n, unsigned short int i) {
     return ((n >> i) | (n << (32 - i))) >> 0;
@@ -86,7 +95,7 @@ unsigned int mln(unsigned int val) {
 int main(int argc, char* argv[]){
    int val;
    unsigned int adr;
-   unsigned short int sft, reg, ch = 0;  
+   unsigned short int sft, reg, ch = 0;
    BYTE buf[4];
    FILE *fd;
    struct stat st;
@@ -182,4 +191,3 @@ int main(int argc, char* argv[]){
 
    return 0;
 }
-
